@@ -1,0 +1,2 @@
+curl $(
+	echo "https://html.duckduckgo.com/html/?q=$1" | python "$HOME/Projects/brow/url.py") | tail -n +200 | python "$HOME/Projects/brow/brow.py"
