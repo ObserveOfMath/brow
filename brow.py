@@ -1,22 +1,28 @@
-# brow -ht be cool B)
-
 import sys
 from html.parser import HTMLParser
-
-print("\n", "-"*40)
-s = False
-a = str()
 
 class Parser(HTMLParser):
     def handle_starttag(self, tag, attr):
         pass
     def handle_endtag(self, tag):
-        if tag == "a":
-            print("\n")
+        self.r += 1
     def handle_data(self, data):
-        global a, s
-        a = data
-        print(data)
+        if self.r == 0:
+            self.hasWiki = not self.hasWiki
+        if self.hasWiki:
+            if (self.r % 12 == 7) or (self.r == 0):
+                print("-"*60)
+            else:
+                print()
+            if data != "Feedback":
+                print(data)
+        else:
+            if not (self.r % 12):
+                print("-"*60)
+            else:
+                print()
+            if data != "Feedback":
+                print(data)
 
 stdin = sys.stdin
 file = str()
@@ -26,6 +32,7 @@ for line in stdin:
 
 del stdin
 
-Parser().feed(file)
-
-print("\n", "-"*40)
+parse = Parser()
+parse.r = 0
+parse.hasWiki = False
+parse.feed(file)
