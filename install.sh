@@ -1,5 +1,12 @@
 #!/usr/bin/sh
 
+if [[ $(whoami) != 'root' ]]; then
+  printf '\033[31mERR\033[0m: Run as root.\n'
+  exit 1
+fi
+
+USER=$(getent passwd $SUDO_USER | cut -d: -f6)
+
 # Default root directory
 ROOT_DIR="/usr"
 
@@ -45,6 +52,8 @@ else
   printf "#$ROOT_DIR\n" > .path && printf "Done!\n"
   printf "Writing brow to ./.path\n"
   printf "@$BROW_DIR\n" >> .path && printf "Done!\n"
+  printf "Copying path to home\n"
+  cp .path "$USER/.browrc" && printf "Done!\n"
 
   printf '\n\033[32mDONE\033[0m: brow was installed!\n'
 

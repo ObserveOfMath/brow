@@ -11,9 +11,8 @@
 		git clone 'https://www.github.com/observeofmath/brow'
 		cd brow
 	```
-- Run `./install.sh`, give it a `$DIR` argument if installing on other directory. If so, make sure that
-	- Run `sudo ./install.sh` if **not** giving a argument
-	- Run `./install.sh [DIR]` if `[DIR]` is owned by the user
+- Run `sudo ./install.sh`, give it a `$DIR` argument if installing on other directory. If so, make sure that
+	- Run `sudo ./install.sh` if **not** giving a argument. It defaults to installing at `/usr/bin`
 
 - Uninstall with:
 
@@ -23,9 +22,7 @@
   # OR
   cd brow
   sudo ./remove.sh
-  ```
-
-  
+  ``` 
 
 # Example of usage:
 

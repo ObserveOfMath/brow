@@ -1,18 +1,18 @@
 #!/usr/bin/sh
 
-BROW_DIR=
+BROW_DIR=$(cat "$HOME/.browrc"| grep "^@" | sed -e "s/@//g")
 
 # How to query
 if [[ $1 = "-ht" ]]; then
 	curl -s $(
 		echo "https://html.duckduckgo.com/html/?q=how%20to%20$2" |
-		python url.py) |
-		tail -n +200 | python brow.py
+		python "$BROW_DIR/url.py") |
+		tail -n +200 | python "$BROW_DIR/brow.py"
 	exit
 fi
 
 # Normal query
 curl -s $(
 	echo "https://html.duckduckgo.com/html/?q=$1" |
-	python url.py) |
-	tail -n +200 | python brow.py
+	python "$BROW_DIR/url.py") |
+	tail -n +200 | python "$BROW_DIR/brow.py"
