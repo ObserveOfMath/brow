@@ -1,12 +1,18 @@
+#!/usr/bin/sh
+
+BROW_DIR=
+
+# How to query
 if [[ $1 = "-ht" ]]; then
 	curl -s $(
 		echo "https://html.duckduckgo.com/html/?q=how%20to%20$2" |
-		python "$HOME/Projects/brow/url.py") |
-		tail -n +200 | python "$HOME/Projects/brow/brow.py"
+		python url.py) |
+		tail -n +200 | python brow.py
 	exit
 fi
 
+# Normal query
 curl -s $(
 	echo "https://html.duckduckgo.com/html/?q=$1" |
-	python "$HOME/Projects/brow/url.py") |
-	tail -n +200 | python "$HOME/Projects/brow/brow.py"
+	python url.py) |
+	tail -n +200 | python brow.py

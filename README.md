@@ -1,11 +1,40 @@
 # Brow:
-> *For all your terminal browsing desires *™.
+> For all your terminal browsing desires ™.
 
 # Details:
-- Write `brow "something something something"` and pipe it through `less` (if Unix-like systems) and a parsed result list will appear fetched from the `summary` of duckduckgo's search engine.
-- Write `brow -ht "something something something"` as a shorthand form of `how to something something something`.
-- IMPORTANT: Change the first line of `brow/install.sh` from `cp brow "...."` to `cp brow "/usr/bin"` or update your `$PATH` variable to install it in other directory.
+- Write `brow "[QUERY]"` and pipe it through `less` (if on Unix-like systems) and a parsed result list will appear fetched from the `summary` of duckduckgo's search engine.
+- Write `brow -ht "[QUERY]"` as a shorthand form of `brow "how to [QUERY]"`.
+
+# Installation:
+- Clone this repository and change directory to it
+	```bash
+		git clone 'https://www.github.com/observeofmath/brow'
+		cd brow
+	```
+- Run `./install.sh`, give it a `$DIR` argument if installing on other directory. If so, make sure that
+	- Run `sudo ./install.sh` if **not** giving a argument
+	- Run `./install.sh [DIR]` if `[DIR]` is owned by the user
+
+- Uninstall with:
+
+  ```bash
+  cd brow
+  ./remove.sh
+  # OR
+  cd brow
+  sudo ./remove.sh
+  ```
+
+  
+
+# Example of usage:
+
+```bash
+	brow "Anime was a mistake"
+	brow -ht "suck less at javascript"
+```
 
 # Needs:
 - python >=3
+- standard Unix libraries (curl, less, cat, echo, tail, etc...)
 - patience
